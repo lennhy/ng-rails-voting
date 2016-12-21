@@ -1,11 +1,12 @@
 class Item < ApplicationRecord
   has_many :votes
 
-  def already_voted?
+  def already_voted?(current_user)
     self.votes.each do |vote|
       if vote.user_id == current_user.id
-        true
+        return true
       end
     end
+    false
   end
 end

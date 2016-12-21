@@ -1,6 +1,8 @@
 <h1 ng-bind="vm.title"></h1>
 
-<div class="item-div" ng-repeat="item in vm.items track by $id(item)">
+<div class="item-div" ng-repeat="item in vm.items track by $index">
+
+  <h3 ng-if="!!item.errors" ng-bind="item.errors"></h3>
   <h3 ng-bind="item.name"></h3>
   <p>
     Description: <span ng-bind="item.description"></span>
@@ -9,6 +11,6 @@
     $<span ng-bind="item.price"></span>
   </p>
   <p>
-    Upvote <span>+</span> - # of Votes <span ng-bind="item.votes.length"></span>
+    Upvote <span ng-click="vm.upvote(item.id)">+</span> - # of Votes <span ng-bind="item.votes.length"></span>
   </p>
 </div>

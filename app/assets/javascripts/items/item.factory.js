@@ -6,7 +6,7 @@
         .factory('ItemFactory', ['$http', function($http) {
             return {
                 getItems: getItems,
-                getItem: getItem
+                vote: vote
             }
 
             function getItems() {
@@ -15,11 +15,21 @@
                             .catch(handleError)
             }
 
-            function getItem() {
-
+            function vote(itemId) {
+                var req = {
+                    method: 'POST',
+                    url: '/items/' + itemId + '/vote',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                return $http(req)
+                         .then(handleResponse)
+                         .catch(handleError)
             }
 
             function handleResponse(response) {
+                console.log(response.data)
                 if (response.status === 200) return response.data
                 // else statement that pushes error message to a notificationService
             }

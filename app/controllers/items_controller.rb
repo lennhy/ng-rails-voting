@@ -40,10 +40,10 @@ class ItemsController < ApplicationController
   end
 
   def vote
-    if !@item.already_voted?
-      vote = @item.build(user_id: current_user.id)
+    if !@item.already_voted?(current_user)
+      vote = @item.votes.build(user_id: current_user.id)
       if vote.save
-        render json: { item: @item, message: "Thank you for voting on #{@item.name}" }
+        render json: @item
       else
         render json: { errors: "There was an issue voting on #{@item.name}" }
       end
