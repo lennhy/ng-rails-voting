@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'responders'
 gem 'angular-rails-templates'
 
 gem 'devise'

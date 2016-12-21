@@ -1,1 +1,14 @@
 <h1 ng-bind="vm.title"></h1>
+
+<div class="item-div" ng-repeat="item in vm.items track by $id(item)">
+  <h3 ng-bind="item.name"></h3>
+  <p>
+    Description: <span ng-bind="item.description"></span>
+  </p>
+  <p>
+    $<span ng-bind="item.price"></span>
+  </p>
+  <p>
+    Upvote <span>+</span> - # of Votes <span ng-bind="item.votes.length"></span>
+  </p>
+</div>

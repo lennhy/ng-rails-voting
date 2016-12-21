@@ -5,7 +5,7 @@
         .module('votingApp')
         .controller('ItemsController', ['ItemFactory', function(ItemFactory) {
             var vm = this
-            vm.title = "Welcome to your items"
+            vm.title = "Please vote on your favorite items"
 
             ItemFactory.getItems()
                        .then(setItems)
