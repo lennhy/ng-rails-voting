@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_item, only: [:show, :update, :destroy, :vote]
 
   def index
     render json: Item.all
@@ -16,7 +16,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    render json: @item
+    if @item
+      render json: @item
+    else
+      render json: { errors: 'This is not an item, please try again!!' }
+    end
   end
 
   def update
@@ -32,6 +36,19 @@ class ItemsController < ApplicationController
       render json: { message: 'Item has been destroyed' }
     else
       render json: { errors: 'There was an issue destroying this item' }
+    end
+  end
+
+  def vote
+    if !@item.already_voted?
+      vote = @item.build(user_id: current_user.id)
+      if vote.save
+        render json: { item: @item, message: "Thank you for voting on #{@item.name}" }
+      else
+        render json: { errors: "There was an issue voting on #{@item.name}" }
+      end
+    else
+      render json: { errors: "You have already voted for this item" }
     end
   end
 

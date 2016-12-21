@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :items
-  
+  post 'items/:id/vote', to: 'items#vote'
+
 end

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'angular-rails-templates'
+
 gem 'devise'
 
 gem 'active_model_serializers', '~> 0.10.0'
