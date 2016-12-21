@@ -1,24 +1,21 @@
-# README
+# Goals
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+have a users table
+  - username
+  - email
+  - password
 
-Things you may want to cover:
+have a items table
+  - name
+  - description
+  - price
 
-* Ruby version
+and users will vote on items in the items table
 
-* System dependencies
+item_votes table that belongs to an item and a user
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+item_votes table
+  - user_id
+  - item_id
+  - upvote : boolean
+  - downvote : boolean
